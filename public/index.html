@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter/X to Discord</title>
+    <meta
+      name="description"
+      content="Download media dari tweet Twitter/X dan kirim ke Discord"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <svg class="icon-twitter" viewBox="0 0 24 24" width="32" height="32">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+            />
+          </svg>
+          <svg class="icon-arrow" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+          <svg class="icon-discord" viewBox="0 0 24 24" width="32" height="32">
+            <path
+              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"
+            />
+          </svg>
+        </div>
+        <button id="settings-btn" class="settings-btn" aria-label="Settings">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+            ></path>
+          </svg>
+        </button>
+        <h1>Tweet to Discord</h1>
+        <p class="subtitle">Paste link tweet, kirim media-nya ke Discord</p>
+      </header>
+
+      <main>
+        <form id="tweet-form">
+          <div class="input-group">
+            <input
+              type="url"
+              id="tweet-url"
+              placeholder="https://x.com/username/status/1234567890"
+              required
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="submit" id="submit-btn">
+              <span class="btn-text">Kirim</span>
+              <span class="btn-loading">
+                <svg class="spinner" viewBox="0 0 24 24">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-dasharray="60 200"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </form>
+
+        <div class="info-box">
+          <p><strong>Info Limit Discord:</strong></p>
+          <ul>
+            <li>Standar: ~8 MB (Bot otomatis kompres/kirim link)</li>
+            <li>Nitro Lvl 2: 50 MB</li>
+            <li>Nitro Lvl 3: 100 MB (Maksimal per file di Server)</li>
+          </ul>
+          <p>
+            <small
+              >Upgrade server (Nitro Boost) untuk meningkatkan limit
+              upload.</small
+            >
+          </p>
+        </div>
+
+        <div id="progress-container" class="progress-container hidden">
+          <div class="progress-bar-bg">
+            <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+          </div>
+          <p id="progress-text" class="progress-text">Menyiapkan...</p>
+        </div>
+
+        <div id="result" class="result hidden">
+          <div class="result-content"></div>
+        </div>
+
+        <div id="history" class="history">
+          <h3>Riwayat</h3>
+          <div class="history-list" id="history-list">
+            <p class="empty-state">Belum ada riwayat pengiriman</p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          Powered by
+          <a
+            href="https://github.com/FixTweet/FxTwitter"
+            target="_blank"
+            rel="noopener"
+            >FxTwitter API</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Pengaturan Webhook</h2>
+          <button id="close-modal" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-description">
+            Masukkan URL Webhook Discord channel kamu untuk menerima notifikasi
+            saat me-retweet.
+          </p>
+          <div class="input-group-modal">
+            <label for="webhook-url">Discord Webhook URL</label>
+            <input
+              type="url"
+              id="webhook-url"
+              placeholder="https://discord.com/api/webhooks/..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="input-group-modal checkbox-group">
+            <input type="checkbox" id="allow-compression" checked />
+            <div class="checkbox-label">
+              <label for="allow-compression">Izinkan Kompresi Otomatis</label>
+              <small
+                >Jika dimatikan, file besar akan dikirim sebagai link.</small
+              >
+            </div>
+          </div>
+
+          <div class="tutorial-section">
+            <details>
+              <summary>Cara Membuat Webhook Discord</summary>
+              <ol>
+                <li>Buka Discord di PC/Desktop (atau mode desktop di HP).</li>
+                <li>
+                  Klik kanan pada channel yang ingin kamu tuju, pilih
+                  <strong>Edit Channel</strong>.
+                </li>
+                <li>
+                  Pilih menu <strong>Integrations</strong> >
+                  <strong>Webhooks</strong>.
+                </li>
+                <li>Klik <strong>New Webhook</strong>.</li>
+                <li>
+                  Ganti nama (opsional) dan klik
+                  <strong>Copy Webhook URL</strong>.
+                </li>
+                <li>Paste URL tersebut di kolom di atas.</li>
+              </ol>
+            </details>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="save-settings" class="btn-primary">Simpan</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
