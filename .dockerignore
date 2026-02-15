@@ -1,0 +1,13 @@
+node_modules
+npm-debug.log
+yarn-error.log
+.git
+.gitignore
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+launcher.exe
+# Exclude artifacts if they are in the root (though usually they are in brain dir)
+.gemini
